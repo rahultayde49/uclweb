@@ -1,0 +1,484 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Players</title>
+  <link rel="stylesheet" href="players.css">
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<style>
+body{
+    background-image:url("img/playerbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center ;
+}
+.footer-text-center {
+    width: 100%;   
+    height: min-content;
+    text-align: center;
+    float:left;
+    word-spacing:50px;
+  }
+  
+a.menu:hover {
+    font-size:20px;
+    text-decoration: none;
+  }
+
+</style>
+
+<body>
+  <nav class="navbar navbar-light bg-success">
+    <a class="navbar-brand mb-2">Players</a>
+    <form class="form-inline" id="find">
+      <input class="form-control  mx-2" id="search" maxlength="20" size="20" type="search" placeholder="Search..." aria-label="Search">
+      <button class="btn btn-danger my-2 mx-2" type="submit">Search</button>
+    </form>
+  </nav>
+  <div id="displayplayer"></div>
+  
+  
+<script>
+  
+  
+  let players = [
+  {
+    "name": "Tushar Chaudhari",
+    "age": "23",
+    "dob": "11-aug-97",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "8",
+    "wickets": "7",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "6",
+    "avg": "8.00",
+    "strikerate": "80.0"
+  },
+  {
+    "name": "Dushant Chaudhari",
+    "age": "20",
+    "dob": "14-sept-2000",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Batsman",
+    "runs": "1",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "1",
+    "avg": "",
+    "strikerate": "50.0"
+  },
+  {
+    "name": "Vaibhav Ingle",
+    "age": "27",
+    "dob": "27-dec-93",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "36",
+    "wickets": "3",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "27",
+    "avg": "",
+    "strikerate": "225.0"
+  },
+  {
+    "name": "Sushant Jadhav",
+    "age": "27",
+    "dob": "6-aug-93",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Left arm",
+    "role": "Allrounder",
+    "runs": "57",
+    "wickets": "3",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "28",
+    "avg": "19.00",
+    "strikerate": "162.0"
+  },
+  {
+    "name": "Arpan Bhim",
+    "age": "27",
+    "dob": "17-feb-94",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "31",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "17",
+    "avg": "10.33",
+    "strikerate": "129.17"
+  },
+  {
+    "name": "Amey Pednekar",
+    "age": "27",
+    "dob": "19-apr-94",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrunder",
+    "runs": "4",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "2",
+    "avg": "4",
+    "strikerate": "57.14"
+  },
+  {
+    "name": "Anup Yelve",
+    "age": "27",
+    "dob": "1-feb-94",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "batsman",
+    "runs": "2",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "1",
+    "avg": "1",
+    "strikerate": "66.07"
+  },{
+    "name": "Ankit Mathur",
+    "age": "29",
+    "dob": "17-apr-91",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Batsman",
+    "runs": "2",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "1",
+    "avg": "4",
+    "strikerate": "100"
+  },
+  {
+    "name": "Sanket Barkale",
+    "age": "23",
+    "dob": "9-nov-97",
+    "battingstyle": "LHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "30",
+    "wickets": "1",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "13",
+    "avg": "10",
+    "strikerate": "157.89"
+  },
+  {
+    "name": "Shubham Salunke",
+    "age": "23",
+    "dob": "16-jun-98",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "1",
+    "wickets": "1",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "1",
+    "avg": "1",
+    "strikerate": "50.00"
+  },
+  {
+    "name": "Tushar Shinde",
+    "age": "22",
+    "dob": "23-nov-99",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Batsman",
+    "runs": "",
+    "wickets": "",
+    "matches": "",
+    "bg_img": "img/user.png",
+    "highscore": "",
+    "avg": "",
+    "strikerate": ""
+  },
+  {
+    "name": "Nilay Bendale",
+    "age": "23",
+    "dob": "3-nov-93",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "batsman",
+    "runs": "",
+    "wickets": "",
+    "matches": "",
+    "bg_img": "img/user.png",
+    "highscore": "",
+    "avg": "",
+    "strikerate": ""
+  },
+  {
+    "name": "Kunal Patil",
+    "age": "27",
+    "dob": "2-dec-93",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "3",
+    "wickets": "2",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "3",
+    "avg": "3",
+    "strikerate": "75.00"
+  },
+  {
+    "name": "Hemant Jadhav",
+    "age": "23",
+    "dob": "24-jul-98",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Batsman",
+    "runs": "3",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "3",
+    "avg": "",
+    "strikerate": "100.00"
+  },
+  {
+    "name": "Akshay Naik",
+    "age": "27",
+    "dob": "8-feb-94",
+    "battingstyle": "LHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "21",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "14",
+    "avg": "7",
+    "strikerate": "116.67"
+  },
+  {
+    "name": "Devendrapratap Singh",
+    "age": "35",
+    "dob": "13-nov-86",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "25",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "11",
+    "avg": "8.33",
+    "strikerate": "113.64"
+  },
+  {
+    "name": "Chetan Tawade",
+    "age": "23",
+    "dob": "30-mar-98",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Batsman",
+    "runs": "4",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "2",
+    "avg": "2.0",
+    "strikerate": "50.00"
+  },
+  {
+    "name": "Adi Gadekar",
+    "age": "19",
+    "dob": "19-feb-2002",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "3",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "3",
+    "avg": "3.00",
+    "strikerate": "37.50"
+  },
+  {
+    "name": "Rahul Gadekar",
+    "age": "26",
+    "dob": "5-jan-95",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "33",
+    "wickets": "2",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "24",
+    "avg": "16.50",
+    "strikerate": "157.14"
+  },
+  {
+    "name": "Rahul Tayde",
+    "age": "22",
+    "dob": "8-sept-98",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "43",
+    "wickets": "",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "21",
+    "avg": "21.50",
+    "strikerate": "172.00"
+  },
+  {
+    "name": "Satej Banodkar",
+    "age": "26",
+    "dob": "11-may-95",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "34",
+    "wickets": "1",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "22",
+    "avg": "17",
+    "strikerate": "154.22"
+  },
+  {
+    "name": "Dinesh Shinde",
+    "age": "24",
+    "dob": "18-jun-97",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Batsman",
+    "runs": "",
+    "wickets": "",
+    "matches": "",
+    "bg_img": "img/user.png",
+    "highscore": "",
+    "avg": "",
+    "strikerate": ""
+  },
+  {
+    "name": "Chirag Pathare",
+    "age": "24",
+    "dob": "1-sept-96",
+    "battingstyle": "RHB",
+    "bowlingstyle": "Right arm",
+    "role": "Allrounder",
+    "runs": "20",
+    "wickets": "2",
+    "matches": "4",
+    "bg_img": "img/user.png",
+    "highscore": "12",
+    "avg": "6.67",
+    "strikerate": "153.85"
+  }
+];
+
+
+  console.log(players)
+   
+   let displayplayer = `<div class="container">
+   <div class="row mt-3">
+
+   `; 
+   players.forEach(function(items){
+       console.log(items.name)
+       console.log(items.age)
+       console.log(items.dob)
+       console.log(items.runs)
+       console.log(items.wickets)
+       console.log(items.battingstyle)
+       console.log(items.bowlingstyle)
+       console.log(items.role)
+       console.log(items.avg)
+       console.log(items.strikerate)
+       console.log(items.highscore)
+       console.log(items.matches)
+    
+   displayplayer +=`
+   <div class="col-md-6">
+   <div class="card mb-2 pt-3">
+    <h4 class="pl-3">${items.name}</h4>
+    <div class="" style="background:url(${items.bg_img});background-size:cover;width:100px;height:50px;"></div>
+    <span class="pr-3 text-right">AGE: ${items.age}</span>  
+      <span class="pr-3 text-right">DOB: ${items.dob}</span>
+    <h6 class="pr-3 text-right">${items.role}</h6>
+       
+   <div class="card-footer bg-warning text-left">
+    
+<div class="row">
+        <div class="col-md-5">
+        
+       <h6>Matches: ${items.matches}</h6>
+       <h6>Batting: ${items.battingstyle}</h6>
+       <h6>Bowling: ${items.bowlingstyle}</h6>
+       <h6>Strike-rate: ${items.strikerate}</h6>
+
+        </div>
+        <div class="col">
+          <div class="col-md-6">
+       <h6>Highscore: ${items.highscore}</h6>
+       <h6>Runs: ${items.runs}</h6>
+       <h6>Wickets: ${items.wickets}</h6> 
+       <h6>Average: ${items.avg}</h6> 
+          </div>
+        </div>
+        </div>
+
+   </div>
+   </div>
+   </div>
+       `;
+   })
+   displayplayer +=`</div>
+   </div>
+   `;
+   document.getElementById("displayplayer").innerHTML = displayplayer;
+   
+   
+   function getTextFieldData(){  
+   }
+   
+
+
+
+</script>
+
+
+
+<div class="footer">
+  <p class="footer-text-center my-lg-0 py-5">
+    <a href="index.html" class="menu text-dark">HOME</a>
+    <a href="" class="menu text-dark">ABOUT</a>
+    <a href="https://www.facebook.com/rahultayde49" class="menu text-dark">CREDITS</a>
+  </p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</body>
+
+</html>
+

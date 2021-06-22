@@ -1,0 +1,24 @@
+body{
+    background-image:url("img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center ;
+}
+.footer-text-center {
+    width: 100%;   
+    height: min-content;
+    text-align: center;
+    float:left;
+    word-spacing:50px;
+  }
+  
+a.menu:hover {
+    font-size:20px;
+    text-decoration: none;
+  }
+.new{
+  display: flex;
+  
+margin-top: auto;
+} 
+ 
